@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Desktop notifications</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        
+        <button onclick="notifyMe()">Desktop notify me permission grant!</button>
+        
+
+<script>
+    
+    // request permission on page load
+    "use strict";
+    document.addEventListener('DOMContentLoaded', function () {
+      if (!Notification) {
+        alert('Desktop notifications not available in your browser. Try Chromium.'); 
+        return;
+      }
+
+      if (Notification.permission !== "granted")
+        Notification.requestPermission();
+    });
+
+     // onclick notification function
+    function notifyMe() {
+        
+      // checking notification is granted
+      
+      if (Notification.permission !== "granted")
+          
+        // if not granted ask for permission function
+            
+        Notification.requestPermission();
+    
+      else {
+          
+        // create notification with title icon body
+        
+        var notification = new Notification('Hello from arman hakim sagar', {
+          icon: 'me.jpg',
+          body: "Hey there! You've been notified!",
+        });
+
+        // if click notification where will go
+        
+        notification.onclick = function () {
+            
+          window.open("https://www.facebook.com/ArmanHakimSagar");  
+          document.write("Hello from arman hakim sagar");
+          
+        };
+
+      }
+
+    }
+
+</script>
+
+
+
+    </body>
+</html>
